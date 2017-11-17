@@ -10,6 +10,9 @@ http.createServer(function(request, response) {
     listInStock(response);
   } else if (request.url === "/onorder") {
     listOnOrder(response);
+  } else {
+    response.writeHead(404, {"Content-Type": "text/plain"});
+    response.end("Whoops...data not found!");
   }
 
 
