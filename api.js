@@ -8,6 +8,8 @@ http.createServer(function(request, response) {
     response.end(JSON.stringify(data));
   } else if (request.url === "/instock") {
     listInStock(response);
+  } else if (request.url === "/onorder") {
+    listOnOrder(response);
   }
 
 
@@ -23,5 +25,15 @@ function listInStock(response) {
   });
 
   response.end(JSON.stringify(inStock));
+
+}
+
+function listOnOrder(response) {
+
+  var onOrder = data.filter(function(item) {
+    return item.avail === "On back order";
+  });
+
+  response.end(JSON.stringify(onOrder));
 
 }
